@@ -1,5 +1,6 @@
 module strutil
 
+[direct_array_access]
 pub fn first_line(s string) string {
 	cr := s.index_u8(`\r`)
 	lf := s.index_u8(`\n`)
@@ -15,8 +16,9 @@ pub fn first_line(s string) string {
 	}
 }
 
+[direct_array_access]
 pub fn first_line_not_empty(s string) string {
-	start := unsafe { skip_whitespace_nochk(s, 0, s.len) }
+	start := unsafe { skip_whitespace_within_nochk(s, 0, s.len) }
 	if start == s.len {
 		return ''
 	}
@@ -37,6 +39,7 @@ pub fn first_line_not_empty(s string) string {
 	}
 }
 
+[direct_array_access]
 pub fn last_line(s string) string {
 	cr := s.last_index_u8(`\r`)
 	lf := s.last_index_u8(`\n`)
@@ -52,8 +55,9 @@ pub fn last_line(s string) string {
 	}
 }
 
+[direct_array_access]
 pub fn last_line_not_empty(s string) string {
-	end := unsafe { skip_trailing_whitespace_nochk(s, 0, s.len) }
+	end := unsafe { skip_trailing_whitespace_within_nochk(s, 0, s.len) }
 	if end == 0 {
 		return ''
 	}

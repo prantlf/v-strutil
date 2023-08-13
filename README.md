@@ -13,32 +13,57 @@ v install --git https://github.com/prantlf/v-strutil
 
 ## API
 
-Some methods support arguments `start` and `stop`, so that the operation can take place only on the middle part of the string to avoid creating a new string with the section to run the operation on. If the argument `stop` is `-1`, the length of the input string will be used instead.
+Some methods support arguments `start` and `end`, so that the operation can take place only on the middle part of the string to avoid creating a new string with the section to run the operation on. If the argument `end` is `-1`, the length of the input string will be used instead.
+
+    check_bounds_incl(s string, start int, end int) int
+    check_bounds_excl(s string, start int, end int) int
+    check_bounds_strict(s string, start int, end int) !int
 
     is_space(s string) bool
     is_whitespace(s string) bool
+
+    skip_space(s string) int
+    skip_space_within(s string, start int, end int) int
+    skip_space_within_nochk(s string, start int, end int) int
+    skip_whitespace(s string) int
+    skip_whitespace_within(s string, start int, end int) int
+    skip_whitespace_within_nochk(s string, start int, end int) int
+    skip_trailing_space(s string) int
+    skip_trailing_space_within(s string, start int, end int) int
+    skip_trailing_space_within_nochk(s string, start int, end int) int
+    skip_trailing_whitespace(s string) int
+    skip_trailing_whitespace_within(s string, start int, end int) int
+    skip_trailing_whitespace_within_nochk(s string, start int, end int) int
+
+    avoid_space(s string) (int, int)
+    avoid_space_within(s string, start int, end int) (int, int)
+    avoid_whitespace_nochk(s string, start int, end int) (int, int)
+    avoid_whitespace(s string) (int, int)
+    avoid_whitespace_within(s string, start int, end int) (int, int)
+    avoid_whitespace_nochk(s string, start int, end int) (int, int)
+
+    contains_u8_within(s string, p string, start int) bool
+    contains_u8_within_nochk(s string, p string, start int) bool
+    contains_within(s string, p string, start int) bool
+    contains_within_nochk(s string, p string, start int) bool
+    starts_with_within(s string, p string, start int) bool
+    starts_with_within_nochk(s string, p string, start int) bool
+    ends_with_within(s string, p string, start int) bool
+    ends_with_within_nochk(s string, p string, start int) bool
+
+    index_u8_within(s string, c u8, start int, end int) int
+    index_u8_within_nochk(s string, c u8, start int, end int) int
+    last_index_u8_within(s string, c u8, start int, end int) int
+    last_index_u8_within_nochk(s string, c u8, start int, end int) int
+    index_within(s string, p string, start int, end int) int
+    index_within_nochk(s string, p string, start int, end int) int
+    last_index_within(s string, p string, start int, end int) int
+    last_index_within_nochk(s string, p string, start int, end int) int
 
     first_line(s string) string
     first_line_not_empty(s string) string
     last_line(s string) string
     last_line_not_empty(s string) string
-
-    skip_space(s string, start int, stop int) int
-    skip_space_nochk(s string, start int, end int) int
-    skip_whitespace(s string, start int, stop int) int
-    skip_whitespace_nochk(s string, start int, end int) int
-    skip_trailing_space(s string, start int, stop int) int
-    skip_trailing_space_nochk(s string, start int, end int) int
-    skip_trailing_whitespace(s string, start int, stop int) int
-    skip_trailing_whitespace_nochk(s string, start int, end int) int
-
-    contains_at(s string, p string, start int) bool
-    contains_at_nochk(s string, p string, start int) bool
-
-    index_u8_within(s string, c u8, start int, stop int) int
-    index_u8_within_nochk(s string, c u8, start int, end int) int
-    last_index_u8_within(s string, c u8, start int, stop int) int
-    last_index_u8_within_nochk(s string, c u8, start int, end int) int
 
     replace_u8(s string, rep u8, with u8) string
 

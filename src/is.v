@@ -1,27 +1,11 @@
 module strutil
 
-[direct_array_access]
+[inline]
 pub fn is_space(s string) bool {
-	for c in s {
-		match c {
-			` ` {}
-			else {
-				return false
-			}
-		}
-	}
-	return true
+	return skip_space(s) == s.len
 }
 
-[direct_array_access]
+[inline]
 pub fn is_whitespace(s string) bool {
-	for c in s {
-		match c {
-			` `, `\t`, `\r`, `\n` {}
-			else {
-				return false
-			}
-		}
-	}
-	return true
+	return skip_whitespace(s) == s.len
 }

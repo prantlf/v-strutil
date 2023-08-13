@@ -1,23 +1,20 @@
 module strutil
 
-[direct_array_access]
-pub fn skip_space(s string, start int, stop int) int {
-	if start < 0 || start >= s.len {
-		return 0
+[inline]
+pub fn skip_space(s string) int {
+	return unsafe { skip_space_within_nochk(s, 0, s.len) }
+}
+
+pub fn skip_space_within(s string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
+		return start
 	}
-	end := if stop < 0 {
-		s.len
-	} else {
-		if stop > s.len || stop <= start {
-			return -1
-		}
-		stop
-	}
-	return unsafe { skip_space_nochk(s, start, end) }
+	return unsafe { skip_space_within_nochk(s, start, stop) }
 }
 
 [direct_array_access; unsafe]
-pub fn skip_space_nochk(s string, start int, end int) int {
+pub fn skip_space_within_nochk(s string, start int, end int) int {
 	for i := start; i < end; i++ {
 		if s[i] != ` ` {
 			return i
@@ -26,24 +23,21 @@ pub fn skip_space_nochk(s string, start int, end int) int {
 	return end
 }
 
-[direct_array_access]
-pub fn skip_whitespace(s string, start int, stop int) int {
-	if start < 0 || start >= s.len {
-		return 0
+[inline]
+pub fn skip_whitespace(s string) int {
+	return unsafe { skip_whitespace_within_nochk(s, 0, s.len) }
+}
+
+pub fn skip_whitespace_within(s string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
+		return start
 	}
-	end := if stop < 0 {
-		s.len
-	} else {
-		if stop > s.len || stop <= start {
-			return -1
-		}
-		stop
-	}
-	return unsafe { skip_whitespace_nochk(s, start, end) }
+	return unsafe { skip_whitespace_within_nochk(s, start, stop) }
 }
 
 [direct_array_access; unsafe]
-pub fn skip_whitespace_nochk(s string, start int, end int) int {
+pub fn skip_whitespace_within_nochk(s string, start int, end int) int {
 	for i := start; i < end; i++ {
 		match s[i] {
 			` `, `\t`, `\r`, `\n` {}
@@ -55,26 +49,22 @@ pub fn skip_whitespace_nochk(s string, start int, end int) int {
 	return end
 }
 
-[direct_array_access]
-pub fn skip_trailing_space(s string, start int, stop int) int {
-	if start < 0 || start >= s.len {
+[inline]
+pub fn skip_trailing_space(s string) int {
+	return unsafe { skip_trailing_space_within_nochk(s, 0, s.len) }
+}
+
+pub fn skip_trailing_space_within(s string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
 		return stop
 	}
-	end := if stop < 0 {
-		s.len
-	} else {
-		if stop > s.len || stop <= start {
-			return -1
-		}
-		stop
-	}
-	return unsafe { skip_trailing_space_nochk(s, start, end) }
+	return unsafe { skip_trailing_space_within_nochk(s, start, stop) }
 }
 
 [direct_array_access; unsafe]
-pub fn skip_trailing_space_nochk(s string, start int, end int) int {
-	mut i := end
-	for i > start {
+pub fn skip_trailing_space_within_nochk(s string, start int, end int) int {
+	for i := end; i > start; {
 		i--
 		if s[i] != ` ` {
 			return i + 1
@@ -83,26 +73,22 @@ pub fn skip_trailing_space_nochk(s string, start int, end int) int {
 	return start
 }
 
-[direct_array_access]
-pub fn skip_trailing_whitespace(s string, start int, stop int) int {
-	if start < 0 || start >= s.len {
+[inline]
+pub fn skip_trailing_whitespace(s string, start int, end int) int {
+	return unsafe { skip_trailing_whitespace_within_nochk(s, 0, s.len) }
+}
+
+pub fn skip_trailing_whitespace_within(s string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
 		return stop
 	}
-	end := if stop < 0 {
-		s.len
-	} else {
-		if stop > s.len || stop <= start {
-			return -1
-		}
-		stop
-	}
-	return unsafe { skip_trailing_whitespace_nochk(s, start, end) }
+	return unsafe { skip_trailing_whitespace_within_nochk(s, start, stop) }
 }
 
 [direct_array_access; unsafe]
-pub fn skip_trailing_whitespace_nochk(s string, start int, end int) int {
-	mut i := end
-	for i > start {
+pub fn skip_trailing_whitespace_within_nochk(s string, start int, end int) int {
+	for i := end; i > start; {
 		i--
 		match s[i] {
 			` `, `\t`, `\r`, `\n` {}
