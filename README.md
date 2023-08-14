@@ -37,10 +37,10 @@ Some methods support arguments `start` and `end`, so that the operation can take
 
     avoid_space(s string) (int, int)
     avoid_space_within(s string, start int, end int) (int, int)
-    avoid_whitespace_nochk(s string, start int, end int) (int, int)
+    avoid_space_within_nochk(s string, start int, end int) (int, int)
     avoid_whitespace(s string) (int, int)
     avoid_whitespace_within(s string, start int, end int) (int, int)
-    avoid_whitespace_nochk(s string, start int, end int) (int, int)
+    avoid_whitespace_within_nochk(s string, start int, end int) (int, int)
 
     contains_u8_within(s string, p string, start int) bool
     contains_u8_within_nochk(s string, p string, start int) bool
@@ -59,6 +59,11 @@ Some methods support arguments `start` and `end`, so that the operation can take
     index_within_nochk(s string, p string, start int, end int) int
     last_index_within(s string, p string, start int, end int) int
     last_index_within_nochk(s string, p string, start int, end int) int
+
+    compare_str_within(l string, r string, start_r int, end_r int) int
+    compare_str2_within(l string, start_l int, end_l int, r string, start_r int, end_r int) int
+    compare_str_within_nochk(l string, r string, start_r int, end_r int) int
+    compare_str2_within_nochk(l string, start_l int, end_l int, r string, start_r int, end_r int) int
 
     first_line(s string) string
     first_line_not_empty(s string) string
