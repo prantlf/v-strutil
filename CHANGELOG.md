@@ -1,5 +1,11 @@
 # Changes
 
+## [0.2.0](https://github.com/prantlf/v-strutil/compare/v0.1.0...v0.2.0) (2023-08-14)
+
+### Features
+
+* Add comparison functions ([449a620](https://github.com/prantlf/v-strutil/commit/449a620b4cf3e2f41295e7101405bd12016054a0))
+
 ## [0.1.0](https://github.com/prantlf/v-strutil/compare/v0.0.1...v0.1.0) (2023-08-13)
 
 ### Features
