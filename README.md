@@ -72,6 +72,9 @@ Some methods support arguments `start` and `end`, so that the operation can take
 
     replace_u8(s string, rep u8, with u8) string
 
+    str_len(s &u8, end int) int
+    str_len_nochk(s &u8, end int) int
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Lint and test your code.
