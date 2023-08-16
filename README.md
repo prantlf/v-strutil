@@ -69,6 +69,8 @@ Some methods support arguments `start` and `end`, so that the operation can take
     first_line_not_empty(s string) string
     last_line(s string) string
     last_line_not_empty(s string) string
+    nth_line(s string) ?string
+    nth_line_not_empty(s string) ?string
 
     replace_u8(s string, rep u8, with u8) string
 

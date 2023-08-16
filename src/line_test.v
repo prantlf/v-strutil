@@ -127,3 +127,103 @@ fn test_last_line_not_empty_1_lf() {
 fn test_last_line_not_empty_1_crlf() {
 	assert last_line_not_empty('\r\na') == 'a'
 }
+
+fn test_nth_line_empty() {
+	assert nth_line('', 0)? == ''
+}
+
+fn test_nth_line_negative() {
+	nth_line('', -1) or { return }
+	assert false
+}
+
+fn test_nth_line_beyond() {
+	nth_line('a', 1) or { return }
+	assert false
+}
+
+fn test_nth_line_start_cr() {
+	assert nth_line('\ra', 0)? == ''
+}
+
+fn test_nth_line_start_lf() {
+	assert nth_line('\na', 0)? == ''
+}
+
+fn test_nth_line_start_crlf() {
+	assert nth_line('\r\na', 0)? == ''
+}
+
+fn test_nth_line_first() {
+	assert nth_line('a', 0)? == 'a'
+}
+
+fn test_nth_line_second_from_two() {
+	assert nth_line('a\nb', 1)? == 'b'
+}
+
+fn test_nth_line_second_from_three() {
+	assert nth_line('a\nb\nc', 1)? == 'b'
+}
+
+fn test_nth_line_end_cr() {
+	assert nth_line('a\r', 0)? == 'a'
+}
+
+fn test_nth_line_end_lf() {
+	assert nth_line('a\n', 0)? == 'a'
+}
+
+fn test_nth_line_end_crlf() {
+	assert nth_line('a\r\n', 0)? == 'a'
+}
+
+fn test_nth_line_not_empty_empty() {
+	assert nth_line_not_empty('', 0)? == ''
+}
+
+fn test_nth_line_not_empty_negative() {
+	nth_line_not_empty('', -1) or { return }
+	assert false
+}
+
+fn test_nth_line_not_empty_beyond() {
+	nth_line_not_empty('a', 1) or { return }
+	assert false
+}
+
+fn test_nth_line_not_empty_start_cr() {
+	assert nth_line_not_empty('\ra', 0)? == 'a'
+}
+
+fn test_nth_line_not_empty_start_lf() {
+	assert nth_line_not_empty('\na', 0)? == 'a'
+}
+
+fn test_nth_line_not_empty_start_crlf() {
+	assert nth_line_not_empty('\r\na', 0)? == 'a'
+}
+
+fn test_nth_line_not_empty_first() {
+	assert nth_line_not_empty('a', 0)? == 'a'
+}
+
+fn test_nth_line_not_empty_second() {
+	assert nth_line_not_empty('a\nb', 1)? == 'b'
+}
+
+fn test_nth_line_not_empty_second_with_emty_in_between() {
+	assert nth_line_not_empty('a\n\nb', 1)? == 'b'
+}
+
+fn test_nth_line_not_empty_end_cr() {
+	assert nth_line_not_empty('a\r', 0)? == 'a'
+}
+
+fn test_nth_line_not_empty_end_lf() {
+	assert nth_line_not_empty('a\n', 0)? == 'a'
+}
+
+fn test_nth_line_not_empty_end_crlf() {
+	assert nth_line_not_empty('a\r\n', 0)? == 'a'
+}
