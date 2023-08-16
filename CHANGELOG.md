@@ -1,5 +1,11 @@
 # Changes
 
+## [0.3.0](https://github.com/prantlf/v-strutil/compare/v0.2.0...v0.3.0) (2023-08-16)
+
+### Features
+
+* Add actual string length computation ([f5ef9b7](https://github.com/prantlf/v-strutil/commit/f5ef9b7bd724deed047f0df4eda135009a248810))
+
 ## [0.2.0](https://github.com/prantlf/v-strutil/compare/v0.1.0...v0.2.0) (2023-08-14)
 
 ### Features
