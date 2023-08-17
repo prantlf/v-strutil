@@ -1,5 +1,12 @@
 # Changes
 
+## [0.4.0](https://github.com/prantlf/v-strutil/compare/v0.3.0...v0.4.0) (2023-08-17)
+
+### Features
+
+* Add nth_line to get a line at an index ([2fd37fc](https://github.com/prantlf/v-strutil/commit/2fd37fcd9441c707d6769155a653c32c51ee6232))
+* Add last_nth_line to walk the lines from the end ([8004bb6](https://github.com/prantlf/v-strutil/commit/8004bb605105608cf6191202e92a72af2c878c95))
+
 ## [0.3.0](https://github.com/prantlf/v-strutil/compare/v0.2.0...v0.3.0) (2023-08-16)
 
 ### Features
