@@ -10,9 +10,7 @@
       "args": [
         "-g",
         "crun",
-        "${relativeFile}",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "${relativeFile}"
       ],
       "options": {
         "cwd": "${workspaceFolder}"

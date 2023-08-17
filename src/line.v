@@ -133,3 +133,75 @@ pub fn nth_line_not_empty(s string, n int) ?string {
 	}
 	return none
 }
+
+[direct_array_access]
+pub fn last_nth_line(s string, n int) ?string {
+	mut end := s.len
+	for counter := n; counter >= 0; counter-- {
+		cr := unsafe { last_index_u8_within_nochk(s, `\r`, 0, end) }
+		lf := unsafe { last_index_u8_within_nochk(s, `\n`, 0, end) }
+		if counter == 0 {
+			eoln := if cr > lf || lf < 0 {
+				cr
+			} else {
+				lf
+			}
+			return if eoln >= 0 {
+				s[eoln + 1..end]
+			} else if end < s.len {
+				s[..end]
+			} else {
+				s
+			}
+		}
+		end = if (cr >= 0 && cr < lf) || lf < 0 {
+			cr
+		} else {
+			lf
+		}
+		if end < 0 {
+			break
+		}
+	}
+	return none
+}
+
+[direct_array_access]
+pub fn last_nth_line_not_empty(s string, n int) ?string {
+	mut end := s.len
+	for counter := n; counter >= 0; counter-- {
+		end = unsafe { skip_trailing_whitespace_within_nochk(s, 0, end) }
+		if end == 0 {
+			return if counter == 0 {
+				''
+			} else {
+				none
+			}
+		}
+		cr := unsafe { last_index_u8_within_nochk(s, `\r`, 0, end) }
+		lf := unsafe { last_index_u8_within_nochk(s, `\n`, 0, end) }
+		if counter == 0 {
+			eoln := if cr > lf || lf < 0 {
+				cr
+			} else {
+				lf
+			}
+			return if eoln >= 0 {
+				s[eoln + 1..end]
+			} else if end < s.len {
+				s[..end]
+			} else {
+				s
+			}
+		}
+		end = if (cr >= 0 && cr < lf) || lf < 0 {
+			cr
+		} else {
+			lf
+		}
+		if end < 0 {
+			break
+		}
+	}
+	return none
+}

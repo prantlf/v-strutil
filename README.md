@@ -15,10 +15,6 @@ v install --git https://github.com/prantlf/v-strutil
 
 Some methods support arguments `start` and `end`, so that the operation can take place only on the middle part of the string to avoid creating a new string with the section to run the operation on. If the argument `end` is `-1`, the length of the input string will be used instead.
 
-    check_bounds_incl(s string, start int, end int) int
-    check_bounds_excl(s string, start int, end int) int
-    check_bounds_strict(s string, start int, end int) !int
-
     is_space(s string) bool
     is_whitespace(s string) bool
 
@@ -71,8 +67,14 @@ Some methods support arguments `start` and `end`, so that the operation can take
     last_line_not_empty(s string) string
     nth_line(s string) ?string
     nth_line_not_empty(s string) ?string
+    last_nth_line(s string) ?string
+    last_nth_line_not_empty(s string) ?string
 
     replace_u8(s string, rep u8, with u8) string
+
+    check_bounds_incl(s string, start int, end int) int
+    check_bounds_excl(s string, start int, end int) int
+    check_bounds_strict(s string, start int, end int) !int
 
     str_len(s &u8, end int) int
     str_len_nochk(s &u8, end int) int
