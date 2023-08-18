@@ -2,6 +2,41 @@ module strutil
 
 import strings { Builder }
 
+pub fn str_within(mut b Builder, start int, end int) string {
+	if start < 0 || start >= b.len {
+		return ''
+	}
+	stop := if end < 0 {
+		b.len
+	} else {
+		if start >= end {
+			return ''
+		}
+		if end > b.len {
+			b.len
+		} else {
+			end
+		}
+	}
+	return unsafe { str_within_nochk(mut b, start, stop) }
+}
+
+[unsafe]
+pub fn str_within_nochk(mut b Builder, start int, end int) string {
+	if b.len == 0 || start == end {
+		return ''
+	}
+	b << u8(0)
+	len := end - start
+	mut bcopy := unsafe { &u8(memdup_noscan(&u8(b.data) + start, len + 1)) }
+	unsafe {
+		bcopy[len] = 0
+	}
+	s := unsafe { bcopy.vstring_with_len(len) }
+	b.trim(0)
+	return s
+}
+
 pub fn str_without_whitespace(mut b Builder) string {
 	if b.len == 0 {
 		return ''
@@ -14,7 +49,9 @@ pub fn str_without_whitespace(mut b Builder) string {
 	b << u8(0)
 	len := end - start
 	mut bcopy := unsafe { &u8(memdup_noscan(&u8(b.data) + start, len + 1)) }
-	unsafe { bcopy[len] = 0 }
+	unsafe {
+		bcopy[len] = 0
+	}
 	s := unsafe { bcopy.vstring_with_len(len) }
 	b.trim(0)
 	return s

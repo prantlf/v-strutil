@@ -2,6 +2,27 @@ module strutil
 
 import strings { new_builder }
 
+fn test_within_empty() {
+	mut b := new_builder(0)
+	assert str_within(mut b, 0, 0) == ''
+}
+
+fn test_within_below() {
+	mut b := new_builder(0)
+	assert str_within(mut b, -1, 0) == ''
+}
+
+fn test_within_above() {
+	mut b := new_builder(0)
+	assert str_within(mut b, 1, 0) == ''
+}
+
+fn test_within() {
+	mut b := new_builder(3)
+	b.write_string(' a ')
+	assert str_within(mut b, 1, 2) == 'a'
+}
+
 fn test_empty() {
 	mut b := new_builder(0)
 	assert str_without_whitespace(mut b) == ''
