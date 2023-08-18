@@ -1,5 +1,11 @@
 # Changes
 
+## [0.6.0](https://github.com/prantlf/v-strutil/compare/v0.5.0...v0.6.0) (2023-08-18)
+
+### Features
+
+* Add str_without_whitespace optimising the string extraction from Builder ([2fe4dfd](https://github.com/prantlf/v-strutil/commit/2fe4dfdb50005449469632f3dde3acc1161cddcb))
+
 ## [0.5.0](https://github.com/prantlf/v-strutil/compare/v0.4.0...v0.5.0) (2023-08-18)
 
 ### Bug Fixes
