@@ -74,7 +74,7 @@ pub fn skip_trailing_space_within_nochk(s string, start int, end int) int {
 }
 
 [inline]
-pub fn skip_trailing_whitespace(s string, start int, end int) int {
+pub fn skip_trailing_whitespace(s string) int {
 	return unsafe { skip_trailing_whitespace_within_nochk(s, 0, s.len) }
 }
 
