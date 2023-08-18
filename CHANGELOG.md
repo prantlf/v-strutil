@@ -1,5 +1,16 @@
 # Changes
 
+## [0.5.0](https://github.com/prantlf/v-strutil/compare/v0.4.0...v0.5.0) (2023-08-18)
+
+### Bug Fixes
+
+* Remove start and end arguments from skip_trailing_whitespace ([7d17338](https://github.com/prantlf/v-strutil/commit/7d1733869c244786b9313fdd234465961946dba8))
+
+### BREAKING CHANGES
+
+The start and end arguments were added to skip_trailing_whitespace
+by an accident. They remain in skip_trailing_whitespace_within, like in other functions.
+
 ## [0.4.0](https://github.com/prantlf/v-strutil/compare/v0.3.0...v0.4.0) (2023-08-17)
 
 ### Features
