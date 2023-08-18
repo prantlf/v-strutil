@@ -1,5 +1,11 @@
 # Changes
 
+## [0.7.0](https://github.com/prantlf/v-strutil/compare/v0.6.0...v0.7.0) (2023-08-18)
+
+### Features
+
+* Add str_within  optimising the string extraction from Builder ([7c35b74](https://github.com/prantlf/v-strutil/commit/7c35b742fef7abefcbaa92a9588981c2a7adb7fd))
+
 ## [0.6.0](https://github.com/prantlf/v-strutil/compare/v0.5.0...v0.6.0) (2023-08-18)
 
 ### Features
