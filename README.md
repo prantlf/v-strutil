@@ -79,6 +79,10 @@ Some methods support arguments `start` and `end`, so that the operation can take
     str_len(s &u8, end int) int
     str_len_nochk(s &u8, end int) int
 
+    str_without_whitespace(mut b strings.Builder) string
+    str_without_leading_whitespace(mut b strings.Builder) string
+    str_without_trailing_whitespace(mut b strings.Builder) string
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Lint and test your code.
