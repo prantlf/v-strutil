@@ -96,4 +96,3 @@ Copyright (c) 2023 Ferdinand Prantl
 Licensed under the MIT license.
 
 [VPM]: https://vpm.vlang.io/packages/prantlf.strutil
-[abstractions]: #abstractions
