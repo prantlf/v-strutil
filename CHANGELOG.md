@@ -1,5 +1,11 @@
 # Changes
 
+## [0.8.0](https://github.com/prantlf/v-strutil/compare/v0.7.0...v0.8.0) (2023-09-10)
+
+### Features
+
+* Add functions cutting lines from start and end ([1c7227f](https://github.com/prantlf/v-strutil/commit/1c7227f76f3b13a874daef1a517b91bf7a1295c5))
+
 ## [0.7.0](https://github.com/prantlf/v-strutil/compare/v0.6.0...v0.7.0) (2023-08-18)
 
 ### Features
