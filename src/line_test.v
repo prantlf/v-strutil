@@ -331,3 +331,55 @@ fn test_last_nth_line_not_empty_start_lf() {
 fn test_last_nth_line_not_empty_start_crlf() {
 	assert last_nth_line_not_empty('\r\na', 0)? == 'a'
 }
+
+fn test_until_last_nth_line_not_empty_empty() {
+	assert until_last_nth_line_not_empty('', 0) == ''
+}
+
+fn test_until_last_nth_line_not_empty_negative() {
+	assert until_last_nth_line_not_empty('', -1) == ''
+}
+
+fn test_until_last_nth_line_not_empty_beyond() {
+	assert until_last_nth_line_not_empty('a', 1) == ''
+}
+
+fn test_until_last_nth_line_not_empty_first() {
+	assert until_last_nth_line_not_empty('a', 0) == 'a'
+}
+
+fn test_until_last_nth_line_not_empty_second_from_two() {
+	assert until_last_nth_line_not_empty('a\nb', 1) == 'a'
+}
+
+fn test_until_last_nth_line_not_empty_second_from_three() {
+	assert until_last_nth_line_not_empty('a\nb\nc', 1) == 'a\nb'
+}
+
+fn test_until_last_nth_line_not_empty_second_with_emty_in_between() {
+	assert until_last_nth_line_not_empty('a\n\nb', 1) == 'a'
+}
+
+fn test_until_last_nth_line_not_empty_end_cr() {
+	assert until_last_nth_line_not_empty('a\r', 0) == 'a'
+}
+
+fn test_until_last_nth_line_not_empty_end_lf() {
+	assert until_last_nth_line_not_empty('a\n', 0) == 'a'
+}
+
+fn test_until_last_nth_line_not_empty_end_crlf() {
+	assert until_last_nth_line_not_empty('a\r\n', 0) == 'a'
+}
+
+fn test_until_last_nth_line_not_empty_start_cr() {
+	assert until_last_nth_line_not_empty('\ra', 0) == '\ra'
+}
+
+fn test_until_last_nth_line_not_empty_start_lf() {
+	assert until_last_nth_line_not_empty('\na', 0) == '\na'
+}
+
+fn test_until_last_nth_line_not_empty_start_crlf() {
+	assert until_last_nth_line_not_empty('\r\na', 0) == '\r\na'
+}

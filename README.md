@@ -63,12 +63,20 @@ Some methods support arguments `start` and `end`, so that the operation can take
 
     first_line(s string) string
     first_line_not_empty(s string) string
+    from_second_line(s string) string
+    from_second_line_not_empty(s string) string
     last_line(s string) string
     last_line_not_empty(s string) string
-    nth_line(s string) ?string
-    nth_line_not_empty(s string) ?string
-    last_nth_line(s string) ?string
-    last_nth_line_not_empty(s string) ?string
+    until_one_but_last_line(s string) string
+    until_one_but_last_line_not_empty(s string) string
+    nth_line(s string, n int) ?string
+    nth_line_not_empty(s string, n int) ?string
+    from_nth_line(s string, n int) string
+    from_nth_line_not_empty(s string, n int) string
+    last_nth_line(s string, n int) ?string
+    last_nth_line_not_empty(s string, n int) ?string
+    until_last_nth_line(s string, n int) string
+    until_last_nth_line_not_empty(s string, n int) string
 
     replace_u8(s string, rep u8, with u8) string
 
