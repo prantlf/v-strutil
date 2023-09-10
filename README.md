@@ -38,14 +38,14 @@ Some methods support arguments `start` and `end`, so that the operation can take
     avoid_whitespace_within(s string, start int, end int) (int, int)
     avoid_whitespace_within_nochk(s string, start int, end int) (int, int)
 
-    contains_u8_within(s string, p string, start int) bool
-    contains_u8_within_nochk(s string, p string, start int) bool
-    contains_within(s string, p string, start int) bool
-    contains_within_nochk(s string, p string, start int) bool
-    starts_with_within(s string, p string, start int) bool
-    starts_with_within_nochk(s string, p string, start int) bool
-    ends_with_within(s string, p string, start int) bool
-    ends_with_within_nochk(s string, p string, start int) bool
+    contains_u8_within(s string, p string, start int, end int) bool
+    contains_u8_within_nochk(s string, p string, start int, end int) bool
+    contains_within(s string, p string, start int, end int) bool
+    contains_within_nochk(s string, p string, start int, end int) bool
+    starts_with_within(s string, p string, start int, end int) bool
+    starts_with_within_nochk(s string, p string, start int, end int) bool
+    ends_with_within(s string, p string, start int, end int) bool
+    ends_with_within_nochk(s string, p string, start int, end int) bool
 
     index_u8_within(s string, c u8, start int, end int) int
     index_u8_within_nochk(s string, c u8, start int, end int) int
