@@ -1,5 +1,16 @@
 # Changes
 
+## [0.9.0](https://github.com/prantlf/v-strutil/compare/v0.8.0...v0.9.0) (2023-09-11)
+
+### Features
+
+* Add lookups for eoln and right after it ([7c8ca69](https://github.com/prantlf/v-strutil/commit/7c8ca69f0327c5afbac7b5529ecee15f0a7d6a15))
+
+### BREAKING CHANGES
+
+Carriage return cannot be used alone as a line break any more.
+It has to be always followed by a line feed. Let us see is this change survives.
+
 ## [0.8.0](https://github.com/prantlf/v-strutil/compare/v0.7.0...v0.8.0) (2023-09-10)
 
 ### Features
