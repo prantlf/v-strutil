@@ -5,7 +5,7 @@ fn test_first_line_empty() {
 }
 
 fn test_first_line_0_cr() {
-	assert first_line('\ra') == ''
+	assert first_line('\na') == ''
 }
 
 fn test_first_line_0_lf() {
@@ -21,7 +21,7 @@ fn test_first_line_1() {
 }
 
 fn test_first_line_1_cr() {
-	assert first_line('a\r') == 'a'
+	assert first_line('a\n') == 'a'
 }
 
 fn test_first_line_1_lf() {
@@ -37,7 +37,7 @@ fn test_first_line_not_empty_empty() {
 }
 
 fn test_first_line_not_empty_0_cr() {
-	assert first_line_not_empty('\ra') == 'a'
+	assert first_line_not_empty('\na') == 'a'
 }
 
 fn test_first_line_not_empty_0_lf() {
@@ -53,7 +53,7 @@ fn test_first_line_not_empty_1() {
 }
 
 fn test_first_line_not_empty_1_cr() {
-	assert first_line_not_empty('a\r') == 'a'
+	assert first_line_not_empty('a\n') == 'a'
 }
 
 fn test_first_line_not_empty_1_lf() {
@@ -73,7 +73,7 @@ fn test_last_line_1() {
 }
 
 fn test_last_line_0_cr() {
-	assert last_line('a\r') == ''
+	assert last_line('a\n') == ''
 }
 
 fn test_last_line_0_lf() {
@@ -85,7 +85,7 @@ fn test_last_line_0_crlf() {
 }
 
 fn test_last_line_1_cr() {
-	assert last_line('\ra') == 'a'
+	assert last_line('\na') == 'a'
 }
 
 fn test_last_line_1_lf() {
@@ -105,7 +105,7 @@ fn test_last_line_not_empty_1() {
 }
 
 fn test_last_line_not_empty_0_cr() {
-	assert last_line_not_empty('a\r') == 'a'
+	assert last_line_not_empty('a\n') == 'a'
 }
 
 fn test_last_line_not_empty_0_lf() {
@@ -117,7 +117,7 @@ fn test_last_line_not_empty_0_crlf() {
 }
 
 fn test_last_line_not_empty_1_cr() {
-	assert last_line_not_empty('\ra') == 'a'
+	assert last_line_not_empty('\na') == 'a'
 }
 
 fn test_last_line_not_empty_1_lf() {
@@ -143,7 +143,7 @@ fn test_nth_line_beyond() {
 }
 
 fn test_nth_line_start_cr() {
-	assert nth_line('\ra', 0)? == ''
+	assert nth_line('\na', 0)? == ''
 }
 
 fn test_nth_line_start_lf() {
@@ -167,7 +167,7 @@ fn test_nth_line_second_from_three() {
 }
 
 fn test_nth_line_end_cr() {
-	assert nth_line('a\r', 0)? == 'a'
+	assert nth_line('a\n', 0)? == 'a'
 }
 
 fn test_nth_line_end_lf() {
@@ -193,7 +193,7 @@ fn test_nth_line_not_empty_beyond() {
 }
 
 fn test_nth_line_not_empty_start_cr() {
-	assert nth_line_not_empty('\ra', 0)? == 'a'
+	assert nth_line_not_empty('\na', 0)? == 'a'
 }
 
 fn test_nth_line_not_empty_start_lf() {
@@ -217,7 +217,7 @@ fn test_nth_line_not_empty_second_with_emty_in_between() {
 }
 
 fn test_nth_line_not_empty_end_cr() {
-	assert nth_line_not_empty('a\r', 0)? == 'a'
+	assert nth_line_not_empty('a\n', 0)? == 'a'
 }
 
 fn test_nth_line_not_empty_end_lf() {
@@ -255,7 +255,7 @@ fn test_last_nth_line_second_from_three() {
 }
 
 fn test_last_nth_line_end_cr() {
-	assert last_nth_line('a\r', 0)? == ''
+	assert last_nth_line('a\n', 0)? == ''
 }
 
 fn test_last_nth_line_end_lf() {
@@ -267,7 +267,7 @@ fn test_last_nth_line_end_crlf() {
 }
 
 fn test_last_nth_line_start_cr() {
-	assert last_nth_line('\ra', 0)? == 'a'
+	assert last_nth_line('\na', 0)? == 'a'
 }
 
 fn test_last_nth_line_start_lf() {
@@ -309,7 +309,7 @@ fn test_last_nth_line_not_empty_second_with_emty_in_between() {
 }
 
 fn test_last_nth_line_not_empty_end_cr() {
-	assert last_nth_line_not_empty('a\r', 0)? == 'a'
+	assert last_nth_line_not_empty('a\n', 0)? == 'a'
 }
 
 fn test_last_nth_line_not_empty_end_lf() {
@@ -321,7 +321,7 @@ fn test_last_nth_line_not_empty_end_crlf() {
 }
 
 fn test_last_nth_line_not_empty_start_cr() {
-	assert last_nth_line_not_empty('\ra', 0)? == 'a'
+	assert last_nth_line_not_empty('\na', 0)? == 'a'
 }
 
 fn test_last_nth_line_not_empty_start_lf() {
@@ -361,7 +361,7 @@ fn test_until_last_nth_line_not_empty_second_with_emty_in_between() {
 }
 
 fn test_until_last_nth_line_not_empty_end_cr() {
-	assert until_last_nth_line_not_empty('a\r', 0) == 'a'
+	assert until_last_nth_line_not_empty('a\n', 0) == 'a'
 }
 
 fn test_until_last_nth_line_not_empty_end_lf() {
@@ -373,7 +373,7 @@ fn test_until_last_nth_line_not_empty_end_crlf() {
 }
 
 fn test_until_last_nth_line_not_empty_start_cr() {
-	assert until_last_nth_line_not_empty('\ra', 0) == '\ra'
+	assert until_last_nth_line_not_empty('\na', 0) == '\na'
 }
 
 fn test_until_last_nth_line_not_empty_start_lf() {

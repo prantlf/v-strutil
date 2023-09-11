@@ -165,3 +165,87 @@ pub fn last_index_within_nochk(s string, p string, start int, end int) int {
 	}
 	return -1
 }
+
+pub fn index_of_eoln_within(s string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
+		return -1
+	}
+	return unsafe { index_of_eoln_within_nochk(s, start, stop) }
+}
+
+[direct_array_access; unsafe]
+pub fn index_of_eoln_within_nochk(s string, start int, end int) int {
+	for i := start; i < end; i++ {
+		c := s[i]
+		if c == `\r` || c == `\n` {
+			return i
+		}
+	}
+	return -1
+}
+
+pub fn last_index_of_eoln_within(s string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
+		return -1
+	}
+	return unsafe { last_index_of_eoln_within_nochk(s, start, stop) }
+}
+
+[direct_array_access; unsafe]
+pub fn last_index_of_eoln_within_nochk(s string, start int, end int) int {
+	for i := end; i > start; {
+		i--
+		c := s[i]
+		if c == `\r` || c == `\n` {
+			return i
+		}
+	}
+	return -1
+}
+
+pub fn index_after_eoln_within(s string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
+		return -1
+	}
+	return unsafe { index_after_eoln_within_nochk(s, start, stop) }
+}
+
+[direct_array_access; unsafe]
+pub fn index_after_eoln_within_nochk(s string, start int, end int) int {
+	for i := start; i < end; i++ {
+		if s[i] == `\n` {
+			return if i < end {
+				i + 1
+			} else {
+				-1
+			}
+		}
+	}
+	return -1
+}
+
+pub fn last_index_after_eoln_within(s string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
+		return -1
+	}
+	return unsafe { last_index_after_eoln_within_nochk(s, start, stop) }
+}
+
+[direct_array_access; unsafe]
+pub fn last_index_after_eoln_within_nochk(s string, start int, end int) int {
+	for i := end; i > start; {
+		i--
+		if s[i] == `\n` {
+			return if i < end {
+				i + 1
+			} else {
+				-1
+			}
+		}
+	}
+	return -1
+}

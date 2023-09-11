@@ -55,6 +55,14 @@ Some methods support arguments `start` and `end`, so that the operation can take
     index_within_nochk(s string, p string, start int, end int) int
     last_index_within(s string, p string, start int, end int) int
     last_index_within_nochk(s string, p string, start int, end int) int
+    index_of_eoln_within(s string, start int, end int) int
+    index_of_eoln_within_nochk(s string, start int, end int) int
+    last_index_of_eoln_within(s string, start int, end int) int
+    last_index_of_eoln_within_nochk(s string, start int, end int) int
+    index_after_eoln_within(s string, start int, end int) int
+    index_after_eoln_within_nochk(s string, start int, end int) int
+    last_index_after_eoln_within(s string, start int, end int) int
+    last_index_after_eoln_within_nochk(s string, start int, end int) int
 
     compare_str_within(l string, r string, start_r int, end_r int) int
     compare_str2_within(l string, start_l int, end_l int, r string, start_r int, end_r int) int

@@ -15,13 +15,7 @@ fn first_line_impl(s string, start int) string {
 	if start == s.len {
 		return ''
 	}
-	cr := unsafe { index_u8_within_nochk(s, `\r`, start, s.len) }
-	lf := unsafe { index_u8_within_nochk(s, `\n`, start, s.len) }
-	eoln := if (cr >= 0 && cr < lf) || lf < 0 {
-		cr
-	} else {
-		lf
-	}
+	eoln := unsafe { index_of_eoln_within_nochk(s, start, s.len) }
 	return if eoln >= 0 {
 		s[start..eoln]
 	} else if start > 0 {
@@ -46,18 +40,12 @@ fn from_second_line_impl(s string, start int, not_empty bool) string {
 	if start == s.len {
 		return ''
 	}
-	cr := unsafe { index_u8_within_nochk(s, `\r`, start, s.len) }
-	lf := unsafe { index_u8_within_nochk(s, `\n`, start, s.len) }
-	mut eoln := if cr > lf || lf < 0 {
-		cr
-	} else {
-		lf
-	}
+	mut eoln := unsafe { index_after_eoln_within_nochk(s, start, s.len) }
 	if not_empty && eoln >= 0 {
-		eoln = unsafe { skip_whitespace_within_nochk(s, eoln + 1, s.len) }
+		eoln = unsafe { skip_whitespace_within_nochk(s, eoln, s.len) }
 	}
 	return if eoln >= 0 {
-		s[eoln + 1..]
+		s[eoln..]
 	} else {
 		''
 	}
@@ -78,15 +66,9 @@ fn last_line_impl(s string, end int) string {
 	if end == 0 {
 		return ''
 	}
-	cr := unsafe { last_index_u8_within_nochk(s, `\r`, 0, end) }
-	lf := unsafe { last_index_u8_within_nochk(s, `\n`, 0, end) }
-	eoln := if cr > lf || lf < 0 {
-		cr
-	} else {
-		lf
-	}
+	eoln := unsafe { last_index_after_eoln_within_nochk(s, 0, end) }
 	return if eoln >= 0 {
-		s[eoln + 1..end]
+		s[eoln..end]
 	} else if end < s.len {
 		s[..end]
 	} else {
@@ -109,13 +91,7 @@ fn until_one_but_last_line_impl(s string, end int, not_empty bool) string {
 	if end == 0 {
 		return ''
 	}
-	cr := unsafe { last_index_u8_within_nochk(s, `\r`, 0, end) }
-	lf := unsafe { last_index_u8_within_nochk(s, `\n`, 0, end) }
-	mut eoln := if (cr >= 0 && cr < lf) || lf < 0 {
-		cr
-	} else {
-		lf
-	}
+	mut eoln := unsafe { last_index_of_eoln_within_nochk(s, 0, end) }
 	if not_empty && eoln > 0 {
 		eoln = unsafe { skip_trailing_whitespace_within_nochk(s, 0, eoln) }
 	}
@@ -130,14 +106,8 @@ fn until_one_but_last_line_impl(s string, end int, not_empty bool) string {
 pub fn nth_line(s string, n int) ?string {
 	mut start := 0
 	for counter := n; counter >= 0; counter-- {
-		cr := unsafe { index_u8_within_nochk(s, `\r`, start, s.len) }
-		lf := unsafe { index_u8_within_nochk(s, `\n`, start, s.len) }
 		if counter == 0 {
-			eoln := if (cr >= 0 && cr < lf) || lf < 0 {
-				cr
-			} else {
-				lf
-			}
+			eoln := unsafe { index_of_eoln_within_nochk(s, start, s.len) }
 			return if eoln >= 0 {
 				s[start..eoln]
 			} else if start > 0 {
@@ -146,12 +116,8 @@ pub fn nth_line(s string, n int) ?string {
 				s
 			}
 		}
-		start = if cr > lf || lf < 0 {
-			cr
-		} else {
-			lf
-		} + 1
-		if start == 0 || start == s.len {
+		start = unsafe { index_after_eoln_within_nochk(s, start, s.len) }
+		if start <= 0 || start == s.len {
 			break
 		}
 	}
@@ -170,14 +136,8 @@ pub fn nth_line_not_empty(s string, n int) ?string {
 				none
 			}
 		}
-		cr := unsafe { index_u8_within_nochk(s, `\r`, start, s.len) }
-		lf := unsafe { index_u8_within_nochk(s, `\n`, start, s.len) }
 		if counter == 0 {
-			eoln := if (cr >= 0 && cr < lf) || lf < 0 {
-				cr
-			} else {
-				lf
-			}
+			eoln := unsafe { index_of_eoln_within_nochk(s, start, s.len) }
 			return if eoln >= 0 {
 				s[start..eoln]
 			} else if start > 0 {
@@ -186,12 +146,8 @@ pub fn nth_line_not_empty(s string, n int) ?string {
 				s
 			}
 		}
-		start = if cr > lf || lf < 0 {
-			cr
-		} else {
-			lf
-		} + 1
-		if start == 0 || start == s.len {
+		start = unsafe { index_after_eoln_within_nochk(s, start, s.len) }
+		if start <= 0 || start == s.len {
 			break
 		}
 	}
@@ -209,13 +165,7 @@ pub fn from_nth_line(s string, n int) string {
 				''
 			}
 		}
-		cr := unsafe { index_u8_within_nochk(s, `\r`, start, s.len) }
-		lf := unsafe { index_u8_within_nochk(s, `\n`, start, s.len) }
-		start = if cr > lf || lf < 0 {
-			cr
-		} else {
-			lf
-		} + 1
+		start = unsafe { index_after_eoln_within_nochk(s, start, s.len) }
 		if start == 0 || start == s.len {
 			break
 		}
@@ -238,13 +188,7 @@ pub fn from_nth_line_not_empty(s string, n int) string {
 				''
 			}
 		}
-		cr := unsafe { index_u8_within_nochk(s, `\r`, start, s.len) }
-		lf := unsafe { index_u8_within_nochk(s, `\n`, start, s.len) }
-		start = if cr > lf || lf < 0 {
-			cr
-		} else {
-			lf
-		} + 1
+		start = unsafe { index_after_eoln_within_nochk(s, start, s.len) }
 		if start == 0 || start == s.len {
 			break
 		}
@@ -256,27 +200,17 @@ pub fn from_nth_line_not_empty(s string, n int) string {
 pub fn last_nth_line(s string, n int) ?string {
 	mut end := s.len
 	for counter := n; counter >= 0; counter-- {
-		cr := unsafe { last_index_u8_within_nochk(s, `\r`, 0, end) }
-		lf := unsafe { last_index_u8_within_nochk(s, `\n`, 0, end) }
 		if counter == 0 {
-			eoln := if cr > lf || lf < 0 {
-				cr
-			} else {
-				lf
-			}
+			eoln := unsafe { last_index_after_eoln_within_nochk(s, 0, end) }
 			return if eoln >= 0 {
-				s[eoln + 1..end]
+				s[eoln..end]
 			} else if end < s.len {
 				s[..end]
 			} else {
 				s
 			}
 		}
-		end = if (cr >= 0 && cr < lf) || lf < 0 {
-			cr
-		} else {
-			lf
-		}
+		end = unsafe { last_index_of_eoln_within_nochk(s, 0, end) }
 		if end < 0 {
 			break
 		}
@@ -296,27 +230,17 @@ pub fn last_nth_line_not_empty(s string, n int) ?string {
 				none
 			}
 		}
-		cr := unsafe { last_index_u8_within_nochk(s, `\r`, 0, end) }
-		lf := unsafe { last_index_u8_within_nochk(s, `\n`, 0, end) }
 		if counter == 0 {
-			eoln := if cr > lf || lf < 0 {
-				cr
-			} else {
-				lf
-			}
+			eoln := unsafe { last_index_after_eoln_within_nochk(s, 0, end) }
 			return if eoln >= 0 {
-				s[eoln + 1..end]
+				s[eoln..end]
 			} else if end < s.len {
 				s[..end]
 			} else {
 				s
 			}
 		}
-		end = if (cr >= 0 && cr < lf) || lf < 0 {
-			cr
-		} else {
-			lf
-		}
+		end = unsafe { last_index_of_eoln_within_nochk(s, 0, end) }
 		if end < 0 {
 			break
 		}
@@ -335,13 +259,7 @@ pub fn until_last_nth_line(s string, n int) string {
 				''
 			}
 		}
-		cr := unsafe { last_index_u8_within_nochk(s, `\r`, 0, end) }
-		lf := unsafe { last_index_u8_within_nochk(s, `\n`, 0, end) }
-		end = if (cr >= 0 && cr < lf) || lf < 0 {
-			cr
-		} else {
-			lf
-		}
+		end = unsafe { last_index_of_eoln_within_nochk(s, 0, end) }
 		if end < 0 {
 			break
 		}
@@ -364,13 +282,7 @@ pub fn until_last_nth_line_not_empty(s string, n int) string {
 				''
 			}
 		}
-		cr := unsafe { last_index_u8_within_nochk(s, `\r`, 0, end) }
-		lf := unsafe { last_index_u8_within_nochk(s, `\n`, 0, end) }
-		end = if (cr >= 0 && cr < lf) || lf < 0 {
-			cr
-		} else {
-			lf
-		}
+		end = unsafe { last_index_of_eoln_within_nochk(s, 0, end) }
 		if end < 0 {
 			break
 		}
