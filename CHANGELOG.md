@@ -1,5 +1,11 @@
 # Changes
 
+## [0.9.1](https://github.com/prantlf/v-strutil/compare/v0.9.0...v0.9.1) (2023-12-11)
+
+### Bug Fixes
+
+* Adapt for V langage changes ([7153d05](https://github.com/prantlf/v-strutil/commit/7153d05b42fe88cd5c1081e79f391be7a8f79520))
+
 ## [0.9.0](https://github.com/prantlf/v-strutil/compare/v0.8.0...v0.9.0) (2023-09-11)
 
 ### Features
