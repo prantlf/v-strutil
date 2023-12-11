@@ -1,6 +1,6 @@
 module strutil
 
-[inline]
+@[inline]
 pub fn skip_space(s string) int {
 	return unsafe { skip_space_within_nochk(s, 0, s.len) }
 }
@@ -13,7 +13,7 @@ pub fn skip_space_within(s string, start int, end int) int {
 	return unsafe { skip_space_within_nochk(s, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn skip_space_within_nochk(s string, start int, end int) int {
 	for i := start; i < end; i++ {
 		if s[i] != ` ` {
@@ -23,7 +23,7 @@ pub fn skip_space_within_nochk(s string, start int, end int) int {
 	return end
 }
 
-[inline]
+@[inline]
 pub fn skip_whitespace(s string) int {
 	return unsafe { skip_whitespace_within_nochk(s, 0, s.len) }
 }
@@ -36,7 +36,7 @@ pub fn skip_whitespace_within(s string, start int, end int) int {
 	return unsafe { skip_whitespace_within_nochk(s, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn skip_whitespace_within_nochk(s string, start int, end int) int {
 	for i := start; i < end; i++ {
 		match s[i] {
@@ -49,7 +49,7 @@ pub fn skip_whitespace_within_nochk(s string, start int, end int) int {
 	return end
 }
 
-[inline]
+@[inline]
 pub fn skip_trailing_space(s string) int {
 	return unsafe { skip_trailing_space_within_nochk(s, 0, s.len) }
 }
@@ -62,7 +62,7 @@ pub fn skip_trailing_space_within(s string, start int, end int) int {
 	return unsafe { skip_trailing_space_within_nochk(s, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn skip_trailing_space_within_nochk(s string, start int, end int) int {
 	for i := end; i > start; {
 		i--
@@ -73,7 +73,7 @@ pub fn skip_trailing_space_within_nochk(s string, start int, end int) int {
 	return start
 }
 
-[inline]
+@[inline]
 pub fn skip_trailing_whitespace(s string) int {
 	return unsafe { skip_trailing_whitespace_within_nochk(s, 0, s.len) }
 }
@@ -86,7 +86,7 @@ pub fn skip_trailing_whitespace_within(s string, start int, end int) int {
 	return unsafe { skip_trailing_whitespace_within_nochk(s, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn skip_trailing_whitespace_within_nochk(s string, start int, end int) int {
 	for i := end; i > start; {
 		i--

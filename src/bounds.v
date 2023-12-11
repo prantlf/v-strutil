@@ -1,6 +1,6 @@
 module strutil
 
-[noinit]
+@[noinit]
 pub struct RangeError {
 	Error
 	msg string

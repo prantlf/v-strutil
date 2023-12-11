@@ -33,12 +33,12 @@ pub fn compare_str2_within(l string, start_l int, end_l int, r string, start_r i
 	return unsafe { compare_str2_within_nochk(l, start_l, stop_l, r, start_r, stop_r) }
 }
 
-[direct_array_access; inline; unsafe]
+@[direct_array_access; inline; unsafe]
 pub fn compare_str_within_nochk(l string, r string, start_r int, end_r int) int {
 	return unsafe { compare_str2_within_nochk(l, 0, l.len, r, start_r, end_r) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn compare_str2_within_nochk(l string, start_l int, end_l int, r string, start_r int, end_r int) int {
 	l_len := end_l - start_l
 	r_len := end_r - start_r

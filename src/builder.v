@@ -21,7 +21,7 @@ pub fn str_within(mut b Builder, start int, end int) string {
 	return unsafe { str_within_nochk(mut b, start, stop) }
 }
 
-[unsafe]
+@[unsafe]
 pub fn str_within_nochk(mut b Builder, start int, end int) string {
 	if b.len == 0 || start == end {
 		return ''

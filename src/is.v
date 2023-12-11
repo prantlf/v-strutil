@@ -1,11 +1,11 @@
 module strutil
 
-[inline]
+@[inline]
 pub fn is_space(s string) bool {
 	return skip_space(s) == s.len
 }
 
-[inline]
+@[inline]
 pub fn is_whitespace(s string) bool {
 	return skip_whitespace(s) == s.len
 }
@@ -19,7 +19,7 @@ pub fn str_len(s &u8, end int) int {
 	return unsafe { str_len_nochk(s, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn str_len_nochk(s &u8, end int) int {
 	for i := 0; i < end; i++ {
 		if unsafe { s[i] } == `\0` {

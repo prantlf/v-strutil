@@ -1,6 +1,6 @@
 module strutil
 
-[inline]
+@[inline]
 pub fn avoid_space(s string) (int, int) {
 	unsafe {
 		return avoid_space_within_nochk(s, 0, s.len)
@@ -20,14 +20,14 @@ pub fn avoid_space_within(s string, start int, end int) (int, int) {
 	}
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn avoid_space_within_nochk(s string, start int, end int) (int, int) {
 	from := unsafe { skip_space_within_nochk(s, start, end) }
 	to := unsafe { skip_trailing_space_within_nochk(s, from, end) }
 	return from, to
 }
 
-[inline]
+@[inline]
 pub fn avoid_whitespace(s string) (int, int) {
 	unsafe {
 		return avoid_whitespace_within_nochk(s, 0, s.len)
@@ -47,7 +47,7 @@ pub fn avoid_whitespace_within(s string, start int, end int) (int, int) {
 	}
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn avoid_whitespace_within_nochk(s string, start int, end int) (int, int) {
 	from := unsafe { skip_whitespace_within_nochk(s, start, end) }
 	to := unsafe { skip_trailing_whitespace_within_nochk(s, from, end) }

@@ -1,6 +1,6 @@
 module strutil
 
-[inline]
+@[inline]
 pub fn first_line(s string) string {
 	return first_line_impl(s, 0)
 }
@@ -10,7 +10,7 @@ pub fn first_line_not_empty(s string) string {
 	return first_line_impl(s, start)
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn first_line_impl(s string, start int) string {
 	if start == s.len {
 		return ''
@@ -25,7 +25,7 @@ fn first_line_impl(s string, start int) string {
 	}
 }
 
-[inline]
+@[inline]
 pub fn from_second_line(s string) string {
 	return from_second_line_impl(s, 0, false)
 }
@@ -35,7 +35,7 @@ pub fn from_second_line_not_empty(s string) string {
 	return from_second_line_impl(s, start, true)
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn from_second_line_impl(s string, start int, not_empty bool) string {
 	if start == s.len {
 		return ''
@@ -51,7 +51,7 @@ fn from_second_line_impl(s string, start int, not_empty bool) string {
 	}
 }
 
-[inline]
+@[inline]
 pub fn last_line(s string) string {
 	return last_line_impl(s, s.len)
 }
@@ -61,7 +61,7 @@ pub fn last_line_not_empty(s string) string {
 	return last_line_impl(s, end)
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn last_line_impl(s string, end int) string {
 	if end == 0 {
 		return ''
@@ -76,7 +76,7 @@ fn last_line_impl(s string, end int) string {
 	}
 }
 
-[inline]
+@[inline]
 pub fn until_one_but_last_line(s string) string {
 	return until_one_but_last_line_impl(s, s.len, false)
 }
@@ -86,7 +86,7 @@ pub fn until_one_but_last_line_not_empty(s string) string {
 	return until_one_but_last_line_impl(s, end, true)
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn until_one_but_last_line_impl(s string, end int, not_empty bool) string {
 	if end == 0 {
 		return ''
@@ -102,7 +102,7 @@ fn until_one_but_last_line_impl(s string, end int, not_empty bool) string {
 	}
 }
 
-[direct_array_access]
+@[direct_array_access]
 pub fn nth_line(s string, n int) ?string {
 	mut start := 0
 	for counter := n; counter >= 0; counter-- {
@@ -124,7 +124,7 @@ pub fn nth_line(s string, n int) ?string {
 	return none
 }
 
-[direct_array_access]
+@[direct_array_access]
 pub fn nth_line_not_empty(s string, n int) ?string {
 	mut start := 0
 	for counter := n; counter >= 0; counter-- {
@@ -154,7 +154,7 @@ pub fn nth_line_not_empty(s string, n int) ?string {
 	return none
 }
 
-[direct_array_access]
+@[direct_array_access]
 pub fn from_nth_line(s string, n int) string {
 	mut start := 0
 	for counter := n; counter >= 0; counter-- {
@@ -173,7 +173,7 @@ pub fn from_nth_line(s string, n int) string {
 	return ''
 }
 
-[direct_array_access]
+@[direct_array_access]
 pub fn from_nth_line_not_empty(s string, n int) string {
 	mut start := 0
 	for counter := n; counter >= 0; counter-- {
@@ -196,7 +196,7 @@ pub fn from_nth_line_not_empty(s string, n int) string {
 	return ''
 }
 
-[direct_array_access]
+@[direct_array_access]
 pub fn last_nth_line(s string, n int) ?string {
 	mut end := s.len
 	for counter := n; counter >= 0; counter-- {
@@ -218,7 +218,7 @@ pub fn last_nth_line(s string, n int) ?string {
 	return none
 }
 
-[direct_array_access]
+@[direct_array_access]
 pub fn last_nth_line_not_empty(s string, n int) ?string {
 	mut end := s.len
 	for counter := n; counter >= 0; counter-- {
@@ -248,7 +248,7 @@ pub fn last_nth_line_not_empty(s string, n int) ?string {
 	return none
 }
 
-[direct_array_access]
+@[direct_array_access]
 pub fn until_last_nth_line(s string, n int) string {
 	mut end := s.len
 	for counter := n; counter >= 0; counter-- {
@@ -267,7 +267,7 @@ pub fn until_last_nth_line(s string, n int) string {
 	return ''
 }
 
-[direct_array_access]
+@[direct_array_access]
 pub fn until_last_nth_line_not_empty(s string, n int) string {
 	mut end := s.len
 	for counter := n; counter >= 0; counter-- {

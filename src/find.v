@@ -8,7 +8,7 @@ pub fn contains_u8_within(s string, c u8, start int, end int) bool {
 	return unsafe { contains_u8_within_nochk(s, c, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn contains_u8_within_nochk(s string, c u8, start int, end int) bool {
 	for i := start; i < end; i++ {
 		if s[i] == c {
@@ -26,7 +26,7 @@ pub fn contains_within(s string, p string, start int, end int) bool {
 	return unsafe { contains_within_nochk(s, p, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn contains_within_nochk(s string, p string, start int, end int) bool {
 	return unsafe { index_within_nochk(s, p, start, end) >= 0 }
 }
@@ -39,7 +39,7 @@ pub fn starts_with_within(s string, p string, start int, end int) bool {
 	return unsafe { starts_with_within_nochk(s, p, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn starts_with_within_nochk(s string, p string, start int, end int) bool {
 	if p.len > end - start || p.len == 0 {
 		return false
@@ -62,7 +62,7 @@ pub fn ends_with_within(s string, p string, start int, end int) bool {
 	return unsafe { ends_with_within_nochk(s, p, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn ends_with_within_nochk(s string, p string, start int, end int) bool {
 	if p.len > end - start || p.len == 0 {
 		return false
@@ -85,7 +85,7 @@ pub fn index_u8_within(s string, c u8, start int, end int) int {
 	return unsafe { index_u8_within_nochk(s, c, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn index_u8_within_nochk(s string, c u8, start int, end int) int {
 	for i := start; i < end; i++ {
 		if s[i] == c {
@@ -103,7 +103,7 @@ pub fn last_index_u8_within(s string, c u8, start int, end int) int {
 	return unsafe { last_index_u8_within_nochk(s, c, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn last_index_u8_within_nochk(s string, c u8, start int, end int) int {
 	for i := end; i > start; {
 		i--
@@ -122,7 +122,7 @@ pub fn index_within(s string, p string, start int, end int) int {
 	return unsafe { index_within_nochk(s, p, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn index_within_nochk(s string, p string, start int, end int) int {
 	if p.len > end - start || p.len == 0 {
 		return -1
@@ -148,7 +148,7 @@ pub fn last_index_within(s string, p string, start int, end int) int {
 	return unsafe { last_index_within_nochk(s, p, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn last_index_within_nochk(s string, p string, start int, end int) int {
 	if p.len > end - start || p.len == 0 {
 		return -1
@@ -174,7 +174,7 @@ pub fn index_of_eoln_within(s string, start int, end int) int {
 	return unsafe { index_of_eoln_within_nochk(s, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn index_of_eoln_within_nochk(s string, start int, end int) int {
 	for i := start; i < end; i++ {
 		c := s[i]
@@ -193,7 +193,7 @@ pub fn last_index_of_eoln_within(s string, start int, end int) int {
 	return unsafe { last_index_of_eoln_within_nochk(s, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn last_index_of_eoln_within_nochk(s string, start int, end int) int {
 	for i := end; i > start; {
 		i--
@@ -213,7 +213,7 @@ pub fn index_after_eoln_within(s string, start int, end int) int {
 	return unsafe { index_after_eoln_within_nochk(s, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn index_after_eoln_within_nochk(s string, start int, end int) int {
 	for i := start; i < end; i++ {
 		if s[i] == `\n` {
@@ -235,7 +235,7 @@ pub fn last_index_after_eoln_within(s string, start int, end int) int {
 	return unsafe { last_index_after_eoln_within_nochk(s, start, stop) }
 }
 
-[direct_array_access; unsafe]
+@[direct_array_access; unsafe]
 pub fn last_index_after_eoln_within_nochk(s string, start int, end int) int {
 	for i := end; i > start; {
 		i--
