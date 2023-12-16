@@ -1,5 +1,11 @@
 # Changes
 
+## [0.10.0](https://github.com/prantlf/v-strutil/compare/v0.9.1...v0.10.0) (2023-12-16)
+
+### Features
+
+* Add functions count and count_u8 ([97b7aa7](https://github.com/prantlf/v-strutil/commit/97b7aa7fd02d6937f2bccd59a2430622b712eef6))
+
 ## [0.9.1](https://github.com/prantlf/v-strutil/compare/v0.9.0...v0.9.1) (2023-12-11)
 
 ### Bug Fixes
