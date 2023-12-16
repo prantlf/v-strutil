@@ -40,8 +40,14 @@ Some methods support arguments `start` and `end`, so that the operation can take
 
     contains_u8_within(s string, p string, start int, end int) bool
     contains_u8_within_nochk(s string, p string, start int, end int) bool
+    count_u8(s string, c u8) int
+    count_u8_within(s string, c u8, start int, end int) bool
+    count_u8_within_nochk(s string, c u8, start int, end int) bool
     contains_within(s string, p string, start int, end int) bool
     contains_within_nochk(s string, p string, start int, end int) bool
+    count(s string, p string) int
+    count_within(s string, p string, start int, end int) bool
+    count_within_nochk(s string, p string, start int, end int) bool
     starts_with_within(s string, p string, start int, end int) bool
     starts_with_within_nochk(s string, p string, start int, end int) bool
     ends_with_within(s string, p string, start int, end int) bool

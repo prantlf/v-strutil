@@ -18,6 +18,30 @@ pub fn contains_u8_within_nochk(s string, c u8, start int, end int) bool {
 	return false
 }
 
+@[inline]
+pub fn count_u8(s string, c u8) int {
+	return unsafe { count_u8_within_nochk(s, c, 0, s.len) }
+}
+
+pub fn count_u8_within(s string, c u8, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
+		return 0
+	}
+	return unsafe { count_u8_within_nochk(s, c, start, stop) }
+}
+
+@[direct_array_access; unsafe]
+pub fn count_u8_within_nochk(s string, c u8, start int, end int) int {
+	mut count := 0
+	for i := start; i < end; i++ {
+		if s[i] == c {
+			count++
+		}
+	}
+	return count
+}
+
 pub fn contains_within(s string, p string, start int, end int) bool {
 	stop := check_bounds_incl(s, start, end)
 	if stop < 0 {
@@ -29,6 +53,33 @@ pub fn contains_within(s string, p string, start int, end int) bool {
 @[direct_array_access; unsafe]
 pub fn contains_within_nochk(s string, p string, start int, end int) bool {
 	return unsafe { index_within_nochk(s, p, start, end) >= 0 }
+}
+
+@[inline]
+pub fn count(s string, p string) int {
+	return unsafe { count_within_nochk(s, p, 0, s.len) }
+}
+
+pub fn count_within(s string, p string, start int, end int) int {
+	stop := check_bounds_incl(s, start, end)
+	if stop < 0 {
+		return 0
+	}
+	return unsafe { count_within_nochk(s, p, start, stop) }
+}
+
+@[direct_array_access; unsafe]
+pub fn count_within_nochk(s string, p string, start int, end int) int {
+	mut count := 0
+	skip := p.len
+	for from := start; from < end; from += skip {
+		from = unsafe { index_within_nochk(s, p, from, end) }
+		if from < 0 {
+			return count
+		}
+		count++
+	}
+	return count
 }
 
 pub fn starts_with_within(s string, p string, start int, end int) bool {
