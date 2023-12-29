@@ -50,7 +50,7 @@ pub fn contains_within(s string, p string, start int, end int) bool {
 	return unsafe { contains_within_nochk(s, p, start, stop) }
 }
 
-@[direct_array_access; unsafe]
+@[direct_array_access; unsafe; inline]
 pub fn contains_within_nochk(s string, p string, start int, end int) bool {
 	return unsafe { index_within_nochk(s, p, start, end) >= 0 }
 }
