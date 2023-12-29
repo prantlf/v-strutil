@@ -1,5 +1,15 @@
 # Changes
 
+## [0.11.0](https://github.com/prantlf/v-strutil/compare/v0.10.0...v0.11.0) (2023-12-29)
+
+### Features
+
+* Add functions index and last_index ([a9e0927](https://github.com/prantlf/v-strutil/commit/a9e09278926d1c280f696887e9e6bc783743e672))
+
+### Bug Fixes
+
+* Make contains_within_nochk inline ([d59391f](https://github.com/prantlf/v-strutil/commit/d59391fe759358c7a09b494e9165dbfe46ae37a9))
+
 ## [0.10.0](https://github.com/prantlf/v-strutil/compare/v0.9.1...v0.10.0) (2023-12-16)
 
 ### Features
