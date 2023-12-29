@@ -165,6 +165,11 @@ pub fn last_index_u8_within_nochk(s string, c u8, start int, end int) int {
 	return -1
 }
 
+@[inline]
+pub fn index(s string, p string) int {
+	return index_within(s, p, 0, -1)
+}
+
 pub fn index_within(s string, p string, start int, end int) int {
 	stop := check_bounds_incl(s, start, end)
 	if stop < 0 {
@@ -189,6 +194,11 @@ pub fn index_within_nochk(s string, p string, start int, end int) int {
 		i++
 	}
 	return -1
+}
+
+@[inline]
+pub fn last_index(s string, p string) int {
+	return last_index_within(s, p, 0, -1)
 }
 
 pub fn last_index_within(s string, p string, start int, end int) int {

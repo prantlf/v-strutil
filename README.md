@@ -57,8 +57,10 @@ Some methods support arguments `start` and `end`, so that the operation can take
     index_u8_within_nochk(s string, c u8, start int, end int) int
     last_index_u8_within(s string, c u8, start int, end int) int
     last_index_u8_within_nochk(s string, c u8, start int, end int) int
+    index(s string, p string) int
     index_within(s string, p string, start int, end int) int
     index_within_nochk(s string, p string, start int, end int) int
+    last_index(s string, p string) int
     last_index_within(s string, p string, start int, end int) int
     last_index_within_nochk(s string, p string, start int, end int) int
     index_of_eoln_within(s string, start int, end int) int
