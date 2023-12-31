@@ -50,7 +50,7 @@ pub fn contains_within(s string, p string, start int, end int) bool {
 	return unsafe { contains_within_nochk(s, p, start, stop) }
 }
 
-@[direct_array_access; unsafe; inline]
+@[direct_array_access; inline; unsafe]
 pub fn contains_within_nochk(s string, p string, start int, end int) bool {
 	return unsafe { index_within_nochk(s, p, start, end) >= 0 }
 }
@@ -167,7 +167,7 @@ pub fn last_index_u8_within_nochk(s string, c u8, start int, end int) int {
 
 @[inline]
 pub fn index(s string, p string) int {
-	return index_within(s, p, 0, -1)
+	return unsafe { index_within_nochk(s, p, 0, s.len) }
 }
 
 pub fn index_within(s string, p string, start int, end int) int {
@@ -198,7 +198,7 @@ pub fn index_within_nochk(s string, p string, start int, end int) int {
 
 @[inline]
 pub fn last_index(s string, p string) int {
-	return last_index_within(s, p, 0, -1)
+	return unsafe { last_index_within_nochk(s, p, 0, s.len) }
 }
 
 pub fn last_index_within(s string, p string, start int, end int) int {
