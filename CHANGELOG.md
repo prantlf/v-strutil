@@ -1,5 +1,11 @@
 # Changes
 
+## [0.11.1](https://github.com/prantlf/v-strutil/compare/v0.11.0...v0.11.1) (2024-01-01)
+
+### Bug Fixes
+
+* Remove unneded checks from index and last_index ([0cf1fd0](https://github.com/prantlf/v-strutil/commit/0cf1fd0c1900cc8b17019be0b78d0e46ce6c998d))
+
 ## [0.11.0](https://github.com/prantlf/v-strutil/compare/v0.10.0...v0.11.0) (2023-12-29)
 
 ### Features
