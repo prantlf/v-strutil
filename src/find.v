@@ -92,7 +92,7 @@ pub fn starts_with_within(s string, p string, start int, end int) bool {
 
 @[direct_array_access; unsafe]
 pub fn starts_with_within_nochk(s string, p string, start int, end int) bool {
-	if p.len > end - start || p.len == 0 {
+	if p.len > end - start || p == '' {
 		return false
 	}
 	cur := unsafe { s.str + start }
@@ -115,7 +115,7 @@ pub fn ends_with_within(s string, p string, start int, end int) bool {
 
 @[direct_array_access; unsafe]
 pub fn ends_with_within_nochk(s string, p string, start int, end int) bool {
-	if p.len > end - start || p.len == 0 {
+	if p.len > end - start || p == '' {
 		return false
 	}
 	cur := unsafe { s.str + end - p.len }
@@ -180,7 +180,7 @@ pub fn index_within(s string, p string, start int, end int) int {
 
 @[direct_array_access; unsafe]
 pub fn index_within_nochk(s string, p string, start int, end int) int {
-	if p.len > end - start || p.len == 0 {
+	if p.len > end - start || p == '' {
 		return -1
 	}
 	for i := start; i < end; {
@@ -211,7 +211,7 @@ pub fn last_index_within(s string, p string, start int, end int) int {
 
 @[direct_array_access; unsafe]
 pub fn last_index_within_nochk(s string, p string, start int, end int) int {
-	if p.len > end - start || p.len == 0 {
+	if p.len > end - start || p == '' {
 		return -1
 	}
 	for i := s.len - p.len; i >= 0; {

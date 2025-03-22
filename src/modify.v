@@ -2,7 +2,7 @@ module strutil
 
 @[direct_array_access]
 pub fn replace_u8(s string, rep u8, with u8) string {
-	if s.len == 0 {
+	if s == '' {
 		return ''
 	}
 

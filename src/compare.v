@@ -3,7 +3,7 @@ module strutil
 pub fn compare_str_within(l string, r string, start_r int, end_r int) int {
 	stop_r := check_bounds_incl(r, start_r, end_r)
 	if stop_r < 0 {
-		return if l.len == 0 {
+		return if l == '' {
 			0
 		} else {
 			1
